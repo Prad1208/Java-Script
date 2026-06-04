@@ -10,5 +10,38 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: blue;
+}
+.container{
+    border: 2px solid black;
+    padding: 30px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+.inputBox{
+    margin: 20px 0;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 26px 20px;
+    border-radius: 5px;
+
+}
+.container h1{
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 500;
+    font-size: 45px;
+
+}
+.container h1 span{
+    color: #fb7f14;
+    border-bottom: 4px solid #fb7f14;
+    padding-bottom: 7px;
 }

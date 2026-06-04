@@ -1,0 +1,19 @@
+{
+  "name": "java-script",
+  "version": "1.0.0",
+  "main": "bitwise.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prad1208/Java-Script.git"
+  },
+  "author": "Praduman Dwivedi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prad1208/Java-Script/issues"
+  },
+  "homepage": "https://github.com/Prad1208/Java-Script#readme",
+  "description": ""
+}

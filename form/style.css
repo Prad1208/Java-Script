@@ -1,0 +1,134 @@
+/* === FULL PAGE BACKGROUND === */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffbf, #ffbfbf);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 20px3;
+}
+
+/* === FORM CONTAINER (GLASS EFFECT) === */
+form {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.8s ease;
+  color: white;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+/* === LABEL === */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffffd9;
+}
+
+/* === INPUT FIELDS === */
+input {
+  width: 100%;
+  padding: 14px 15px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.18);
+  color: white;
+  outline: none;
+  transition: 0.35s ease;
+}
+
+/* Placeholder color */
+input::placeholder {
+  color: #f0f0f09d;
+}
+
+/* Focus Glow */
+input:focus {
+  border-color: #00eaff;
+  box-shadow: 0 0 12px #00eaff;
+  transform: scale(1.03);
+}
+
+/* === ERROR STATE (RED NEON) === */
+input.error {
+  border-color: #ff3e3e;
+  box-shadow: 0 0 10px #ff3e3e;
+  background: rgba(255, 50, 50, 0.18);
+  animation: shake 0.3s ease;
+}
+
+/* === SUCCESS STATE (GREEN NEON) === */
+input.success {
+  border-color: #4eff95;
+  box-shadow: 0 0 12px #4eff95;
+  background: rgba(50, 255, 50, 0.18);
+  transform: scale(1.04);
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-3px); }
+  50%  { transform: translateX(3px); }
+  75%  { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+/* === ERROR MESSAGE === */
+.error-message {
+  font-size: 14px;
+  color: #ffbfbf;
+  margin-top: 6px;
+  display: none;
+}
+
+.error-message.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+/* === SUBMIT BUTTON === */
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #00eaff, #006eff);
+  color: #0b0b0b;
+  box-shadow: 0 10px 20px rgba(0, 238, 255, 0.35);
+  transition: 0.3s;
+}
+
+/* Button hover */
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 25px rgba(0, 238, 255, 0.45);
+}
+
+/* Button click */
+button:active {
+  transform: scale(0.96);
+}

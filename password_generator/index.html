@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
+    <link rel="Stylesheet" href="style.css">
 </head>
-<link rel="Stylesheet" href="style.css">
 <body>
     <div class="container">
-        <h1>Password Generator</h1>
-        <div class="inputBox">
-    <input type="text" class="passBox">
-    </div>
-    <input type="range" min="1" max="30" value="8">
+        <h1>Generate a <br>
+             <span>Random Password</span> 
+              </h1>    
+    <div class="inputBox">
+    <input type="text" id="passBox" placeholder="Password" >
     </div>
     
+    <button onclick="generatePassword()">Generate Password</button>
     <script src="script.js"></script>
+
 </body>
 </html>

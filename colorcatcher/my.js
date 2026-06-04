@@ -1,4 +1,4 @@
-let targetColor="red";
+let targetColor="";
 let score=0;
 let time=30;
 let timer;
@@ -24,7 +24,7 @@ function createGrid(){
     colors.forEach((color)=>
         {
         const box=document.createElement("div");
-        box.className="color-box";
+        box.className="color-box";  
         box.style.backgroundColor=color;
         box.addEventListener("click",()=>{handleClick(color);});
         grid.appendChild(box);
