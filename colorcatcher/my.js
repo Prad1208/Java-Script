@@ -15,6 +15,7 @@ function shuffleArray(colors){
     }
     return colors;
 }
+
 function createGrid(){
     grid.innerHTML="";
     colors=shuffleArray(colors);
@@ -30,6 +31,7 @@ function createGrid(){
         grid.appendChild(box);
     });
 }
+
 function handleClick(clickedColor){
     if(clickedColor===targetColor){
         score++;

@@ -5,10 +5,14 @@ s1.addEventListener("mouseenter",function(){
 //    s1.innerHTML="5";
 });
 s1.addEventListener("mouseleave",function(){
-    s1.style.backgroundColor="red";
+    // s1.style.backgroundColor="red";
 //    s1.innerHTML="1";
     s1.innerHTML="<h1>1</h1>";
 });
+s1.addEventListener("dblclick",function(){
+    let r=Math.floor(Math.random()*100);
+    s1.innerHTML=`<h1>${r}</h1>`;
+}); 
 
 
 let s2=document.getElementById("sq2");

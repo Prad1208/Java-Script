@@ -10,10 +10,10 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
+    background-color: orange;
 }
 .container{
-    border: 2px solid black;
+    border: 2px solid rgb(178, 32, 32);
     padding: 30px;
     border-radius: 16px;
     background-color: white;
@@ -41,7 +41,7 @@ body{
 
 }
 .container h1 span{
-    color: #fb7f14;
-    border-bottom: 4px solid #fb7f14;
+    color: #fb14dc;
+    border-bottom: 4px solid #090502;
     padding-bottom: 7px;
 }

@@ -14,14 +14,28 @@ function generatePassword(){
     password+=numbers[Math.floor(Math.random()*numbers.length)];
     password+=symbols[Math.floor(Math.random()*symbols.length)];
 
-    while(length > password.length)
+    while(length>password.length)
         {
-        password += allchars[Math.floor
-            (Math.random()*allchars.length)];
+        password += allchars[Math.floor(Math.random()*allchars.length)];
 }
+
 passwordBox.value=password;
 }
-function copyPassword(){
+
+function copyPassword()
+{
     passwordBox.select();
     document.execCommand("copy");
 }
+
+
+
+
+
+
+
+
+
+
+
+
