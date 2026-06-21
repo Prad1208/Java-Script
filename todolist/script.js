@@ -1,58 +1,126 @@
-const taskList=[];
-const listElement=document.getElementById("taskList");
-const status=document.getElementById("status");
+const taskList = document.getElementById("taskList");
+const startBtn = document.getElementById("startBtn");
+const status = document.getElementById("status");
 
-//Setup Speech Recognition
-const SpeechRecognition=window.SpeechRecognition || window.webkitSpeechRecognition;
-const recognition=new SpeechRecognition();
-recognition.continuous=false;
-recognition.lang='en-US';
+let tasks = [];
 
-recognition.onresult=(event)=>
-    {
-    const transcript=event.results[0][0].transcript.toLowerCase();
-    statusText.innerText='Heard: "${transcript}"';
-    if(transcript.startsWith("naya task")){
-        const taskText=transcript.replace ("naya task","").trim();
-        if(taskText)
-            addTask(taskText);
-    }
-    else if(transcript.startsWith("delete task")){
-        const num=parseInt(transcript.split(" ")[2])-1;
-        if(!isNaN(num))
-            deleteTask(num);
-    }
-    else if(transcript.startsWith("mark task")){
-        const num=parseInt
-    }
+// Render tasks
+function renderTasks() {
+    taskList.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        const li = document.createElement("li");
+
+        li.textContent = `${index + 1}. ${task.text}`;
+
+        if (task.completed) {
+            li.style.textDecoration = "line-through";
+            li.style.opacity = "0.6";
+        }
+
+        taskList.appendChild(li);
+    });
 }
-function addTask(task){
-    taskList.push({text:task, done:false});
+
+// Add task
+function addTask(taskText) {
+    if (taskText.trim() === "") return;
+
+    tasks.push({
+        text: taskText,
+        completed: false
+    });
+
     renderTasks();
 }
 
-function deleteTask(num){
-    if(taskList[num]){
-        taskList.splice(num,1);
+// Delete task
+function deleteTask(index) {
+    if (index >= 0 && index < tasks.length) {
+        tasks.splice(index, 1);
         renderTasks();
     }
 }
-function markTaskDone(num){
-    if(taskList[num]){
-        taskList[num].done=true;
+
+// Mark task as completed
+function markTask(index) {
+    if (index >= 0 && index < tasks.length) {
+        tasks[index].completed = true;
         renderTasks();
     }
 }
-function renderTasks(){
-    listElement.innerHTML="";
-    taskList.forEach((task,idx)=>{
-        const li=document.createElement("li");
-        l1.innerText=`${idx+1}.${task.text} ${task.done ? "✅": ""}`;
-        listElement.appendChild(li);
+
+// Initial render
+renderTasks();
+
+const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (!SpeechRecognition) {
+    status.textContent = "Speech recognition is not supported in this browser.";
+    startBtn.disabled = true;
+} else {
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+    recognition.interimResults = false;
+    recognition.continuous = false;
+
+    startBtn.addEventListener("click", () => {
+        status.textContent = "Listening...";
+        recognition.start();
     });
+
+    recognition.onresult = (event) => {
+        const command = event.results[0][0].transcript
+            .toLowerCase()
+            .trim();
+
+        status.textContent = `Heard: "${command}"`;
+
+        // New task
+        if (command.startsWith("new task")) {
+            const taskText = command.replace("new task", "").trim();
+
+            if (taskText) {
+                addTask(taskText);
+            }
+        }
+
+        // Delete task
+        else if (command.startsWith("delete task")) {
+            const number = parseInt(
+                command.replace("delete task", "").trim()
+            );
+
+            if (!isNaN(number)) {
+                deleteTask(number - 1);
+            }
+        }
+
+        // Mark task
+        else if (command.startsWith("mark task")) {
+            const number = parseInt(
+                command.replace("mark task", "").trim()
+            );
+
+            if (!isNaN(number)) {
+                markTask(number - 1);
+            }
+        }
+
+        else {
+            status.textContent += " ❌ Command not recognized";
+        }
+    };
+
+    recognition.onerror = (event) => {
+        status.textContent = `Error: ${event.error}`;
+    };
+
+    recognition.onend = () => {
+        if (status.textContent === "Listening...") {
+            status.textContent = "No speech detected.";
+        }
+    };
 }
-function startVoice(){
-    status.Text.innerText="Listening...";
-    recognition.start();
-}
-document.getElementById("startBtn").addEventListener("click",startVoice);
